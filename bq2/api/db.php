@@ -1,10 +1,10 @@
 <?php
-date_default_timezone_set("Asia/Taipe");
+date_default_timezone_set("Asia/Taipei");
 session_start();
 class DB
 {
 
-    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=123";
+    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db02";
     protected $table;
     protected $pdo;
 
@@ -14,10 +14,10 @@ class DB
         $this->pdo = new PDO($this->dsn, 'root', '');
     }
 
-    function a2s($array)
+  function a2s($array)
     {
         foreach ($array as $col => $val) {
-            $tmp[] = "`$col`='$val";
+            $tmp[] = "`$col`='$val'";
         }
         return $tmp;
     }
@@ -26,7 +26,7 @@ class DB
         if (isset($this->table) && !empty($this->table)) {
             if (is_array($array)) {
                 $tmp = $this->a2s($array);
-                $sql .= "where" . join("&&", $tmp);
+                $sql .= " where" . join("&&", $tmp);
             } elseif (is_numeric($array)) {
 
                 $sql .= "$array";
@@ -56,13 +56,13 @@ class DB
         $sql = "select * from `$this->table`";
         if (is_array($id)) {
             $tmp = $this->a2s($id);
-            $sql .= "where" . join("&&", $tmp);
+            $sql .= " where" . join("&&", $tmp);
         } elseif (is_numeric($id)) {
 
-            $sql .= "where `id`='$id'";
+            $sql .= " where `id`='$id'";
         }
 
-        return $this->pdo->query($sql)->fetchColumn();
+        return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
 
     function save($array)
@@ -72,7 +72,7 @@ class DB
             if (!empty($array)) {
                 $tmp = $this->a2s($array);
             }
-            $sql = "where" . join("&&", $tmp);
+            $sql = " where" . join("&&", $tmp);
         } else {
             $sql = "insert into `$this->table`";
             $cols = "(`" . join("`,`", array_keys($array)) . "`)";
@@ -86,10 +86,10 @@ class DB
         $sql = "delete * from `$this->table`";
         if (is_array($id)) {
             $tmp = $this->a2s($id);
-            $sql .= "where" . join("&&", $tmp);
+            $sql .= " where" . join("&&", $tmp);
         } elseif (is_numeric($id)) {
 
-            $sql .= "where `id`='$id'";
+            $sql .= " where `id`='$id'";
         }
 
         return $this->pdo->exec($sql);
@@ -99,7 +99,7 @@ class DB
     {
         $sql = "select $math($col) from `$this->table`";
         $sql = $this->sql_all($sql, $array, $other);
-        return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        return $this->pdo->query($sql)->fetchColumn();
     }
     function sum($col = '', $array = '', $other = '')
     {
@@ -125,16 +125,19 @@ function to($url)
     header("location:$url");
 }
 
+$Total=new DB('total');
+$User=new DB('users');
+
 if (!isset($_SESSION['visited'])) {
-    if ($Total->count(['date' => date('y-m-d')] > 0)) {
-        $total = $Total->find(['date' => date('y-m-d')]);
+    if ($Total->count(['date' => date('Y-m-d')] > 0)) {
+        $total = $Total->find(['date' => date('Y-m-d')]);
         $total['total']++;
         $Total->save($total);
     } else {
         $Total->save(
             [
                 'total' => 1,
-                'date' => date('y-m-d')
+                'date' => date('Y-m-d')
             ]
 
         );
