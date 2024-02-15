@@ -68,16 +68,17 @@ class DB
     function save($array)
     {
         if (isset($array['id'])) {
-            $sql = "update `$this->table`";
+            $sql = "update `$this->table` set";
             if (!empty($array)) {
                 $tmp = $this->a2s($array);
             }
-            $sql = " where" . join("&&", $tmp);
+            $sql .= join(",", $tmp);
+            $sql .= " where `id`='{$array['id']}'";
         } else {
             $sql = "insert into `$this->table`";
             $cols = "(`" . join("`,`", array_keys($array)) . "`)";
             $vals = "('" . join("','", ($array)) . "')";
-            $sql = $sql . $cols . "values" . $vals;
+            $sql = $sql . $cols . " values" . $vals;
         }
         return $this->pdo->exec($sql);
     }
