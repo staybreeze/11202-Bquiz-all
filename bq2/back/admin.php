@@ -1,5 +1,6 @@
 <fieldset>
     <legend>帳號管理</legend>
+    <form action="./api/edit_user.php" method="post">
     <table style="text-align: center;margin:auto;width:55%">
 
         <tr>
@@ -14,7 +15,7 @@
         <tr class="ct">
             <td><?=$row['acc'];?></td>
             <td><?=str_repeat("*",mb_strlen($row['pw']));?></td>
-            <td><input type="checkbox" name="del[]" valie="<?=$row['id'];?>"></td>
+            <td><input type="checkbox" name="del[]" value="<?=$row['id'];?>"></td>
         </tr>
     
 <?php
@@ -24,6 +25,7 @@
         <input type="submit" value="確定刪除">
         <input type="reset" value="確定清空">
     </div>
+    </form>
     <p style="color:red">*請設定您要註冊的帳號及密碼(最長12個字元)</p>
     <table>
         <tr>
