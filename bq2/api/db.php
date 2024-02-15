@@ -129,13 +129,9 @@ function to($url)
 $Total=new DB('total');
 $User=new DB('users');
 $New=new DB('news');
-
+$Log=new DB('log');
 if (!isset($_SESSION['visited'])) {
-    if ($Total->count(['date' => date('Y-m-d')] > 0)) {
-        $total = $Total->find(['date' => date('Y-m-d')]);
-        $total['total']++;
-        $Total->save($total);
-    } else {
+
         $Total->save(
             [
                 'total' => 1,
@@ -143,6 +139,6 @@ if (!isset($_SESSION['visited'])) {
             ]
 
         );
-    }
+    
     $_SESSION['visited'] = 1;
 }

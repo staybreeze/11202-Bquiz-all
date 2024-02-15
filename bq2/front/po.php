@@ -10,9 +10,12 @@
         display: block;
         margin-top: 10px;
     }
+    .new-list{
+        width:600px;
+    }
 </style>
 
-<div class="nav">目前位置:首頁>分類網誌<span class="type">健康新知</span></div>
+<div class="nav">目前位置:首頁>分類網誌><span class="type">健康新知</span></div>
 
 <fieldset class="types">
 
@@ -29,15 +32,32 @@
     <div class="article"></div>
 </fieldset>
 <script>
+    getList(1)
     $('.type-item').on('click', function() {
         $('.type').text($(this).text())
         let type = $(this).data('id')
+        getList(type)
     })
 
-    function getList(type){
-$.get('api/get_list.php',{type},function(list){
+    function getList(type) {
+        $.get('api/get_list.php', {
+            type
+        }, function(list) {
+            $('.list-items').html(list);
+            $('.article').hide();
+            $('.list-items').show();
 
+        })
+    }
 
-})
+    function getNews(id) {
+        $.get('api/get_news.php', {
+            id
+        }, (news) => {
+            $('.article').html(news);
+            $('.article').show();
+            $('.list-items').hide();
+
+        })
     }
 </script>
