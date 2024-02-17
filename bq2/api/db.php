@@ -130,6 +130,7 @@ $Total=new DB('total');
 $User=new DB('users');
 $New=new DB('news');
 $Log=new DB('log');
+$Que=new DB('que');
 if (!isset($_SESSION['visited'])) {
 
         $Total->save(
