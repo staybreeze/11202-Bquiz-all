@@ -53,10 +53,10 @@ class DB
     }
     function find($id)
     {
-        $sql = "select * from `$this->table`";
+        $sql = "select * from `$this->table` ";
         if (is_array($id)) {
             $tmp = $this->a2s($id);
-            $sql .= " where" . join("&&", $tmp);
+            $sql .= " where" . join(" && ", $tmp);
         } elseif (is_numeric($id)) {
 
             $sql .= " where `id`='$id'";
