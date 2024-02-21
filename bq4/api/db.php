@@ -65,7 +65,7 @@ class DB
     }
     function del($id)
     {
-        $sql = "select * from `$this->table`";
+        $sql = "delete from `$this->table`";
 
         if (is_array($id)) {
             $tmp = $this->a2s($id);
@@ -126,3 +126,5 @@ function dd($id)
 $Bottom=new DB('bottom');
 $Mem=new DB('mem');
 $Admin=new DB('admin');
+$Type=new DB('type');
+$Goods=new DB('goods');

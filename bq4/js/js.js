@@ -5,8 +5,8 @@ function lof(x)
 }
 
 function del(table,id){
-$.post('./api/del.php',{table,id},()=>{
-	location.reload();
-})
-
+    $.post("./api/del.php",{table,id},(res)=>{
+        location.reload();
+		console.log(res);
+    })
 }
