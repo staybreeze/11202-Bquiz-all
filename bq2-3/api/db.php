@@ -40,7 +40,7 @@ class DB
     }
     function all($array = "", $other = "")
     {
-        $sql = "select * from `$this->table";
+        $sql = "select * from `$this->table`";
         $sql = $this->sql_all($sql, $array, $other);
         return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -81,7 +81,7 @@ class DB
         if (isset($array['id'])) {
             $sql = "update `$this->table` set";
             $tmp = $this->a2s($array);
-            $sql .= join("&&", $tmp);
+            $sql .= join(",", $tmp);
             $sql .= " where `id`='{$array['id']}'";
         } else {
             $sql = "insert into `$this->table`";
