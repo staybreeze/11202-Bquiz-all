@@ -61,7 +61,7 @@ class DB
             $tmp = $this->a2s($array);
             $sql .= "where" . join("&&", $tmp);
         } elseif (is_numeric($array)) {
-            $sql .= "`id`='($array";
+            $sql .= " where `id`='$array'";
         }
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
@@ -127,7 +127,7 @@ function to($url)
 }
 
 $Total=new DB('total');
-
+$Title=new DB('title');
 $total=$Total->del(['id'=>1,'total'=>7777]);
 dd($total);
 // $Total->count();
