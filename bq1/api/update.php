@@ -1,8 +1,8 @@
 <?php
 include_once "db.php";
+
 $DB=${ucfirst($_POST['table'])};
 $table=$_POST['table'];
-
 
 if(isset($_FILES['img']['tmp_name'])){
 
@@ -10,13 +10,8 @@ if(isset($_FILES['img']['tmp_name'])){
     $_POST['img']=$_FILES['img']['name'];
 }
 
-if($table != 'admin'){
-    $_POST['sh']=($table=='title')?0:1;
-}
-
-unset($_POST['table']);
-$DB->save($_POST);
+$row=$DB->find($_POST['id']);
+$row['img']=$_POST['img'];
+$DB->save($row);
 
 to("../back.php?do={$table}");
-?>
-

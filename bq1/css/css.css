@@ -77,7 +77,7 @@ body
 {
 	position:relative;
 	border-radius:10px;
-	background:url(icon/menu.fw.png) center no-repeat;
+	background:url(../icon/menu.fw.png) center no-repeat ;
 	background-size:cover;
 	line-height:30px;
 	padding:2px 10px 2px 10px;
@@ -85,14 +85,15 @@ body
 }
 .mainmu:hover
 {
-	background:url(icon/menu2.fw.png) center no-repeat;
+	background:url(../icon/menu2.fw.png) center no-repeat;
 	background-size:cover;
+	z-index: 8;
 }
 .mainmu2
 {
 	position:relative;
 	border-radius:10px;
-	background:url(icon/menu3.fw.png)center no-repeat;
+	background:url(/menu3.fw.png)center no-repeat;
 	background-size:100% 100%;
 	line-height:30px;
 	padding:2px 10px 2px 10px;
@@ -100,8 +101,9 @@ body
 }
 .mainmu2:hover
 {
-	background:url(icon/menu4.fw.png) center no-repeat;
+	background:url(../icon/menu4.fw.png) center no-repeat;
 	background-size:cover;
+	z-index: 8;
 }
 #lf
 {
@@ -151,7 +153,7 @@ input:focus,button:focus
 {
 	box-shadow:#09C 0px 0px 3px .3px;
 }
-.yel td
+.yel td,.yel
 {
 	background:#F3DA49;
 	text-align:center;

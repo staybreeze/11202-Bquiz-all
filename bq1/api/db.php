@@ -70,9 +70,9 @@ class DB
         $sql = "delete from `$this->table`";
         if (is_array($array)) {
             $tmp = $this->a2s($array);
-            $sql .= "where" . join("&&", $tmp);
+            $sql .= " where" . join("&&", $tmp);
         } elseif (is_numeric($array)) {
-            $sql .= "`id`='($array";
+            $sql .= " where `id`='$array'";
         }
         return $this->pdo->exec($sql);
     }
@@ -128,6 +128,20 @@ function to($url)
 
 $Total=new DB('total');
 $Title=new DB('title');
-$total=$Total->del(['id'=>1,'total'=>7777]);
-dd($total);
+$Bottom=new DB('bottom');
+$Mvim=new DB('mvim');
+$Image=new DB('image');
+$News=new DB('news');
+$Admin=new DB('admin');
+$Menu=new DB('menu');
+$Ad=new DB('ad');
+// $total=$Total->del(['id'=>1,'total'=>7777]);
+// dd($total);
 // $Total->count();
+
+if(!isset($_SESSION['visited'])){
+    $total=$Totla->find(1);
+    $total['total']++;
+    $Total->save($total);
+    $_SESSION['visited']=1;
+}

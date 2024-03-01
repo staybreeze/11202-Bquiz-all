@@ -1,27 +1,30 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-					<p class="t cent botli">網站標題管理</p>
+					<p class="t cent botli">管理者帳號管理</p>
 					<form method="post"action="./api/edit.php">
 						<table width="100%">
 							<tbody>
 								<tr class="yel">
-									<td width="45%">網站標題</td>
-									<td width="23%">替代文字</td>
-									<td width="7%">顯示</td>
-									<td width="7%">刪除</td>
-									<td></td>
+									<!-- <td width="45%">網站標題</td> -->
+									<td width="40%">帳號</td>
+									<td width="40%">密碼</td>
+									<td width="20%">刪除</td>
+									<!-- <td></td> -->
 								</tr>
                                 <?php
-                                $rows=$Title->all();
+                                $rows=$Admin->all();
                                 foreach($rows as $row){
                                 ?>
-                                <tr>
-                                    <td><img src="./img/<?=$row['img'];?>" width="300px" height="30px" alt=""></td>
-                                    <td ><input type="text" name="text[]" value=" <?=$row['text'];?>">
+                                <tr class="ct">
+                                    <!-- <td><img src="./img/<?=$row['img'];?>" width="300px" height="30px" alt=""></td> -->
+                                    <td ><input type="text" name="acc[]" value=" <?=trim($row['acc']);?>" style="width:100%">
                                         
                                    </td>
-                                    <td><input type="radio" name="sh" value="<?=$row['id'];?>"  <?=($row['sh']==1?'checked':'');?> ></td>
+								   <td ><input type="password" name="pw[]" value=" <?=$row['pw'];?>" style="width:100%">
+                                        
+										</td>
+                                    <!-- <td><input type="checkbox" name="sh[]" value="<?=$row['id'];?>"  <?=($row['sh']==1?'checked':'');?> ></td> -->
                                     <td><input type="checkbox" name="del[]" value="<?=$row['id'];?>"></td>
-                                    <td><input type="button" value="更新圖片" onclick="op('#cover','#cvr','./modal/upload.php?table=<?=$do;?>&id=<?=$row['id'];?>')"></td>
+                                    <!-- <td><input type="button" value="更新圖片" onclick="op('#cover','#cvr','./modal/upload.php?table=<?=$do;?>&id=<?=$row['id'];?>')"></td> -->
 									<input type="hidden" name="id[]" value="<?=$row['id'];?>">
 								</tr>
                                 <?php
