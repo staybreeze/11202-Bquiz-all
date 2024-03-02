@@ -31,6 +31,48 @@ include_once "./api/db.php" ?>
 				<div id="menuput" class="dbor">
 					<!--主選單放此-->
 					<span class="t botli">主選單區</span>
+
+					<?php
+					$mainnu = $Menu->all(['menu_id' => 0, 'sh' => 1]);
+					foreach ($mainnu as $main) {
+					?>
+
+						<div class="mainmu">
+							<a href="<?= $main['href']; ?>"><?= $main['text']; ?></a>
+							<?php
+							if ($Menu->count(['menu_id' => $main['id']]) > 0) {
+
+							?>
+								<div class="mw">
+									<?php
+									$subs = $Menu->all(['menu_id' => $main['id'], 'sh' => 1]);
+									foreach ($subs as $sub) {
+
+									?>
+
+										<a href="<?= $sub['href']; ?>">
+											<div class="mainmu2">
+												<?= $sub['text']; ?>
+											</div>
+										</a>
+
+									<?php
+
+									} ?>
+
+								</div>
+
+
+							<?php
+							}
+
+							?>
+
+
+						</div>
+					<?php
+					}
+					?>
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
 					<span class="t">進站總人數 :
@@ -62,9 +104,18 @@ include_once "./api/db.php" ?>
 				}
 
 				?>
-				
+
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
+
+					<?php
+
+					$rows = $Image->all(['sh' => 1]);
+					foreach ($rows as $row) {
+					?>
+						<img src="./img/<?= $row['img']; ?>" width="150px" height="103px" alt="">
+					<?php
+					} ?>
 					<script>
 						var nowpage = 0,
 							num = 0;

@@ -20,7 +20,7 @@
                                 foreach($rows as $row){
                                 ?>
                                 <tr>
-                                    <td class="ct"><img src="./img/<?=$row['img'];?>" width="150px" height="150px" alt=""></td>
+                                    <td class="ct"><img src="./img/<?=$row['img'];?>" width="100px" height="68px" alt=""></td>
 
                                     <td><input type="radio" name="sh" value="<?=$row['id'];?>"  <?=($row['sh']==1?'checked':'');?> ></td>
                                     <td><input type="checkbox" name="del[]" value="<?=$row['id'];?>"></td>
