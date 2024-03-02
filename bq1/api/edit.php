@@ -37,8 +37,9 @@ foreach ($_POST['id'] as $key => $id) {
             case "menu":
                 break;
             default:
+        if(isset($row['sh'])){
             $row['sh']=(isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
-            ;
+        }
         }
         // dd($_POST);
         //       dd($row);

@@ -7,7 +7,7 @@
         <input type="text" name="text" id="">
     </div>
     <div class="ct">
-        <div class="flext">
+        <div class="flex">
             <input type="hidden" name="table" value="<?=$_GET['table'];?>">
             <input type="submit" value="新增">
             <input type="reset" value="重置">

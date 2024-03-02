@@ -11,7 +11,7 @@
 					<!-- <td></td> -->
 				</tr>
 				<?php
-				$total = $Image->count();
+				$total = $News->count();
 				$div = 3;
 				$pages = ceil($total / $div);
 				$now = ($_GET['p']) ?? 1;
@@ -41,16 +41,16 @@
 			<?php
 			if ($now - 1 > 0) {
 				$prev = $now - 1;
-				echo "<a href='?do=image&p=$prev'><</a>";
+				echo "<a href='?do=news&p=$prev'><</a>";
 			}
 			for ($i = 1; $i <= $pages; $i++) {
 				$fontsize = ($now == $i) ? 'font-size:24px' : 'font-size:18px';
-				echo "<a href='?do=image&p=$i' style='$fontsize'>$i</a>";
+				echo "<a href='?do=news&p=$i' style='$fontsize'>$i</a>";
 			}
 
 			if ($now + 1 < $pages) {
 				$next = $now + 1;
-				echo "<a href='?do=image&p=$next'>></a>";
+				echo "<a href='?do=news&p=$next'>></a>";
 			}
 			?></div>
 		<table style="margin-top:40px; width:70%;">

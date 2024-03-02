@@ -4,43 +4,9 @@
 	</marquee>
 	<div style="height:32px; display:block;"></div>
 	<!--正中央-->
-	<div style="width:100%; padding:2px; height:290px;">
-		<div id="mwww" loop="true" style="width:100%; height:100%;">
-			<div style="width:99%; height:100%; position:relative;" class="cent">沒有資料</div>
-		</div>
-	</div>
 
-	<script>
-		var lin = new Array();
 
-		<?php
-		//取得所有啟用的輪播圖片
-		$lins = $Mvim->all(['sh' => 1]);
-
-		foreach ($lins as $lin) {
-			//將圖片路徑存入陣列
-			echo "lin.push('{$lin['img']}');";
-		}
-		?>
-
-		var now = 0;
-
-		ww();
-		if (lin.length > 1) {
-			setInterval("ww()", 3000);
-			now = 1;
-		}
-
-		function ww() {
-			$("#mwww").html("<embed loop=true src='./img/" + lin[now] + "' style='width:99%; height:100%;'></embed>")
-			//$("#mwww").attr("src",lin[now])
-			now++;
-			if (now >= lin.length)
-				now = 0;
-		}
-	</script>
-
-	<div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">
+	
 		<span class="t botli">最新消息區
 			<?php
 			if ($News->count(['sh' => 1]) > 5) {
@@ -48,12 +14,20 @@
 			}
 			?>
 		</span>
-		<ul class="ssaa" style="list-style-type:decimal;">
-			<?php
-			$rows = $News->all(['sh' => 1],"limit 5");
-			foreach ($rows as $row) {
+ 	<?php
+					$total = $News->count();
+                    $div = 3;
+                    $pages = ceil($total / $div);
+                    $now = ($_GET['p']) ?? 1;
+                    $start = ($now - 1) * $div;
+                    $rows = $News->all("limit $start,$div");
+                   
 			?>
-				<li><?= mb_substr($row['text'], 0, 20); ?>
+		<ol class="ssaa" style="list-style-type:decimal;" start='<?=$start+1;?>'>
+		<?php
+        foreach ($rows as $row) {
+            ?>
+				<li clss="ssww"><?= mb_substr($row['text'], 0, 20); ?>
 					<div class="all" style="display:none"><?= $row['text']; ?></div>...
 				</li>
 
@@ -63,7 +37,23 @@
 			?>
 
 
-		</ul>
+		</ol>
+        <div class="ct">
+			<?php
+			if ($now - 1 > 0) {
+				$prev = $now - 1;
+				echo "<a href='?do=news&p=$prev'><</a>";
+			}
+			for ($i = 1; $i <= $pages; $i++) {
+				$fontsize = ($now == $i) ? 'font-size:24px' : 'font-size:18px';
+				echo "<a href='?do=news&p=$i' style='$fontsize'>$i</a>";
+			}
+
+			if ($now + 1 < $pages) {
+				$next = $now + 1;
+				echo "<a href='?do=news&p=$next'>></a>";
+			}
+			?></div>
 		<div id="altt" style="position: absolute; width: 350px; min-height: 100px; background-color: rgb(255, 255, 204); top: 50px; left: 130px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
 		<script>
 			$(".ssaa li").hover(
@@ -78,7 +68,7 @@
 				}
 			)
 		</script>
-	</div>
+
 </div>
 <div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
 <script>
