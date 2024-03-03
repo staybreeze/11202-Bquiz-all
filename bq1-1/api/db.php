@@ -42,7 +42,7 @@ class DB
         return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function corunt($array="",$other=""){
+    function count($array="",$other=""){
         $sql="select count(*) from `$this->table`";
         $sql=$this->sql_all($sql, $array, $other);
         return $this->pdo->query($sql)->fetchColumn();
