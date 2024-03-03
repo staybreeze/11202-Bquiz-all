@@ -22,7 +22,7 @@
 								
 								?>
 								<tr>
-									<td><img src="./img/<?=$row['img'];?>"  width="150px" height="103px"></td>
+									<td><img src="./img/<?=$row['img'];?>"  width="100px" height="68px"></td>
 									<!-- <td><input type="text" name="text[]" value="<?=$row['text'];?>"></td> -->
 									<td><input type="checkbox" name="sh[]" value="<?=$row['id'];?>" <?=($row['sh']==1?'checked':'');?>></td>
 									<td><input type="checkbox" name="del[]" value="<?=$row['id'];?>"></td>
