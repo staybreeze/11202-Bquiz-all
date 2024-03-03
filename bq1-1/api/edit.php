@@ -21,6 +21,10 @@ if (isset($_POST['id'])) {
                        $row['text']=$_POST['text'][$idx];
                        $row['sh'] = (isset($_POST['sh'] )&& in_array($id,$_POST['sh'])) ? 1 : 0;
                         break;
+                        case "news":
+                            $row['text']=$_POST['text'][$idx];
+                            $row['sh'] = (isset($_POST['sh'] )&& in_array($id,$_POST['sh'])) ? 1 : 0;
+                             break;
             }
             $DB->save($row);
         }
