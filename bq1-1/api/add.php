@@ -14,6 +14,10 @@ if(isset($_FILES['img']['tmp_name'])){
 if($table != 'admin'){
     $_POST['sh']=($table=='title')?0:1;
 }
+
+if($table == 'menu'){
+    $_POST['menu_id']=0;
+}
 dd($_POST);
 $DB->save($_POST);
 dd($table);

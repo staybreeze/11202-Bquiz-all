@@ -25,6 +25,11 @@ if (isset($_POST['id'])) {
                     $row['text'] = $_POST['text'][$idx];
                     $row['sh'] = (isset($_POST['sh']) && in_array($id, $_POST['sh'])) ? 1 : 0;
                     break;
+                    case "menu":
+                        $row['text'] = $_POST['text'][$idx];
+                        $row['href'] = $_POST['href'][$idx];
+                        $row['sh'] = (isset($_POST['sh']) && in_array($id, $_POST['sh'])) ? 1 : 0;
+                        break;
                 case "bottom":
                     $row['bottom'] = $_POST['bottom'][$idx];
                     // $row['sh'] = (isset($_POST['sh'] )&& in_array($id,$_POST['sh'])) ? 1 : 0;
@@ -39,4 +44,4 @@ if (isset($_POST['id'])) {
     }
 }
 
-// to("../back.php?do={$table}");
+to("../back.php?do={$table}");

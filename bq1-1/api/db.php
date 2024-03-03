@@ -127,3 +127,10 @@ $News=new DB('news');
 $Admin=new DB('admin');
 
 $Menu=new DB('menu');
+
+if(!isset($_SESSION['visited'])){
+    $_SESSION['visited']=1;
+    $total=$Total->find(1);
+    $total['total']++;
+    $Total->save($total);
+}

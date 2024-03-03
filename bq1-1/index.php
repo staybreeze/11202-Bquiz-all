@@ -27,43 +27,80 @@ include_once "./api/db.php"
 	<div id="main">
 		<a title="" href="index.php">
 			<div class="ti" style="background:url(&#39;use/&#39;); background-size:cover;">
-			<img src="./img/<?=$Title->find(['sh'=>1])['img'];?>" alt=""></div><!--標題-->
+				<img src="./img/<?= $Title->find(['sh' => 1])['img']; ?>" alt="">
+			</div><!--標題-->
 		</a>
 		<div id="ms">
 			<div id="lf" style="float:left;">
 				<div id="menuput" class="dbor">
-					<!--主選單放此-->
-					<span class="t botli">主選單區</span>
+					<!--主選單放此--><span class="t botli">主選單區</span>
+					<?php
+					$subs = $Menu->all(['menu_id' => 0]);
+					foreach ($subs as $sub) {
+					?>
+
+						<div class="mainmu">
+							<a href="<?= $sub['href']; ?>"><?= $sub['text']; ?></a>
+							<div class="mw">
+								<?php
+								$rows = $Menu->all(['menu_id' => $sub['id']]);
+								foreach ($rows as $row) {
+								?>
+									<a href="<?= $row['href']; ?>">
+										<div class="mainmu2">
+											<?= $row['text']; ?>
+										</div>
+									</a>
+
+								<?php
+								}
+								?>
+							</div>
+						</div>
+					<?php
+					} ?>
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
 					<span class="t">進站總人數 :
-					<?=$Total->find(1)['total'];?> </span>
+						<?= $Total->find(1)['total']; ?> </span>
 				</div>
 			</div>
-<?php
-$do=($_GET['do'])??'main';
-$file="./front/{$do}.php";
-if(file_exists($file)){
-include $file; 
-}else{
-include "./front/main.php";
-}
+			<?php
+			$do = ($_GET['do']) ?? 'main';
+			$file = "./front/{$do}.php";
+			if (file_exists($file)) {
+				include $file;
+			} else {
+				include "./front/main.php";
+			}
 
-?>
+			?>
 			<div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
 				<!--右邊-->
-				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;?do=admin&#39;)">管理登入</button>
+
+				<?php
+				if (isset($_SESSION['admin'])) {
+
+				?>
+					<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="location.href='back.php'">返回管理</button>
+				<?php
+				} else {
+				?>
+					<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="location.href='?do=login'">管理登入</button>
+				<?php
+				}
+				dd($_SESSION); ?>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
 					<?php
-					$rows=$Image->all(['sh'=>1]);
-					foreach($rows as $row){
+					$rows = $Image->all(['sh' => 1]);
+					foreach ($rows as $row) {
 					?>
-					<img src="./img/<?=$row['img'];?>" width="150px" height="103px">
+						<img src="./img/<?= $row['img']; ?>" width="150px" height="103px">
 
 					<?php
-					
-					}?>
+
+					} ?>
 					<script>
 						var nowpage = 0,
 							num = 0;
@@ -90,7 +127,7 @@ include "./front/main.php";
 		<div style="clear:both;"></div>
 		<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
 			<span class="t" style="line-height:123px;">
-			<?=$Bottom->find(1)['bottom'];?> </span></span>
+				<?= $Bottom->find(1)['bottom']; ?> </span></span>
 		</div>
 	</div>
 
