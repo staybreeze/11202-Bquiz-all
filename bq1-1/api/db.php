@@ -81,7 +81,7 @@ class DB
 
             $sql="insert into `$this->table`";
             $cols="(`".join("`,`",array_keys($array))."`)";
-            $vals="('".join("','",array_keys($array))."')";
+            $vals="('".join("','",$array)."')";
         $sql=$sql.$cols." values".$vals;
    
         }

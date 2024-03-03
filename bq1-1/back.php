@@ -26,14 +26,15 @@ include_once "./api/db.php"
 	<iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
 		<a title="" href="?">
-			<div class="ti" style="background:url(&#39;use/&#39;); background-size:cover;"></div><!--標題-->
+			<div class="ti" style="background:url(&#39;use/&#39;); background-size:cover;">
+			<img src="./img/<?=$Title->find(['sh'=>1])['img'];?>" alt=""></div><!--標題-->
 		</a>
 		<div id="ms">
 			<div id="lf" style="float:left;">
 				<div id="menuput" class="dbor">
 					<!--主選單放此-->
 					<span class="t botli">後台管理選單</span>
-					<a style="color:#000; font-size:13px; text-decoration:none;" href="back.php">
+					<a style="color:#000; font-size:13px; text-decoration:none;" href="?do=title">
 						<div class="mainmu">
 							網站標題管理 </div>
 					</a>
@@ -77,7 +78,16 @@ include_once "./api/db.php"
 						1 </span>
 				</div>
 			</div>
-
+			<div class="di" style="height:540px; border:#999 1px solid; width:76.5%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
+				<!--正中央-->
+				<table width="100%">
+					<tbody>
+						<tr>
+							<td style="width:70%;font-weight:800; border:#333 1px solid; border-radius:3px;" class="cent"><a href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a></td>
+							<td><button onclick="document.cookie=&#39;user=&#39;;location.replace(&#39;?&#39;)" style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
+						</tr>
+					</tbody>
+				</table>
 			<?php
 $do=($_GET['do'])??'title';
 $file="./front/{$do}.php";
@@ -88,6 +98,7 @@ include "./back/title.php";
 }
 
 ?>
+			</div>
 			<div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
 			<script>
 				$(".sswww").hover(
