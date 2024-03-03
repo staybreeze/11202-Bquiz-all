@@ -16,7 +16,7 @@ if($table != 'admin'){
 }
 dd($_POST);
 $DB->save($_POST);
-
-to("../back.php?do={$table}");
+dd($table);
+to("../back.php?do=$table");
 ?>
 

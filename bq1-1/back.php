@@ -90,7 +90,7 @@ include_once "./api/db.php"
 				</table>
 			<?php
 $do=($_GET['do'])??'title';
-$file="./front/{$do}.php";
+$file="./back/{$do}.php";
 if(file_exists($file)){
 include $file; 
 }else{

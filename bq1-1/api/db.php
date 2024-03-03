@@ -112,7 +112,7 @@ echo "</pre>";
 }
 
 function to($url){
-    header("location=$url");
+    header("location:$url");
 }
 
 $Title=new DB('title');
