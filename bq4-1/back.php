@@ -36,11 +36,11 @@ if(isset($_SESSION['admin'])){
 		
 			<?= in_array(2,$row['pr'])?' <a href="?do=order">訂單管理</a>':'';?>
 			<?= in_array(3,$row['pr'])?' <a href="?do=user">會員管理</a>':'';?>
-			<?= in_array(4,$row['pr'])?'	<a href="?do=bot">頁尾版權管理</a>':'';?>
+			<?= in_array(4,$row['pr'])?'	<a href="?do=bottom">頁尾版權管理</a>':'';?>
 			<?= in_array(5,$row['pr'])?'	<a href="?do=news">最新消息管理</a>':'';?>
 			
 		
-				<a href="?do=admin&redo=logout" style="color:#f00;">登出</a>
+				<a href="./api/logout.php" style="color:#f00;">登出</a>
 			</div>
 		</div>
 		<?php
@@ -57,7 +57,7 @@ if(isset($_SESSION['admin'])){
 			?>
 		</div>
 		<div id="bottom" style="line-height:70px; color:#FFF; background:url(icon/bot.png);" class="ct">
-			頁尾版權 : </div>
+			<?=$Bottom->find(1)['botoom'];?> </div>
 	</div>
 
 </body>

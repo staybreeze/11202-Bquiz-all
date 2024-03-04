@@ -126,4 +126,6 @@ $User = new DB('user');
 $Admin = new DB('admin');
 $Good = new DB('good');
 $Type = new DB('type');
-$Order = new DB('Order');
+$Order = new DB('order');
+
+$Bottom = new DB('bottom');
