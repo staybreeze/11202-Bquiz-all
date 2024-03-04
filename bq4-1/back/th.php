@@ -7,6 +7,35 @@
     <input type="button" value="新增" onclick="add('mid')">
 </div>
 
+<table class="all">
+    <?php
+    $bigs = $Type->all(['big_id' => 0]);
+    foreach ($bigs as $big) {
+    ?>
+        <tr>
+            <td class="tt"><?= $big['name']; ?></td>
+            <td class="tt">
+                <input type="button" value="修改" onclick="location.href='?do=edit_admin&id=<?= $row['id']; ?>'">
+                <input type="button" value="刪除" onclick="location.href='./api/del_admin.php?id=<?= $row['id']; ?>'">
+            </td>
+        </tr>
+
+        <?php
+        $mids = $Type->all(['big_id' => $big['id']]);
+        foreach ($mids as $mid) {
+        ?>
+            <tr>
+                <td class="pp"><?= $mid['name']; ?></td>
+                <td class="pp">
+                    <input type="button" value="修改" onclick="location.href='?do=edit_admin&id=<?= $row['id']; ?>'">
+                    <input type="button" value="刪除" onclick="location.href='./api/del_admin.php?id=<?= $row['id']; ?>'">
+                </td>
+            </tr>
+    <?php
+        }
+    } ?>
+</table>
+
 <script>
     getTypes(0)
 
