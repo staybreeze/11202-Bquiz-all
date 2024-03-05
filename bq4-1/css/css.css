@@ -98,13 +98,20 @@ input[type=text],input[type=password]
 {
 	width:170px;
 }
+
 .s
 {
 	display:none;
 }
 div.ww:hover > div.s
 {
+
 	display:block;
+}
+ #left .s a 
+{
+
+	background-color: #EF7429;
 }
 .sb button
 {

@@ -15,8 +15,8 @@
         <tr>
             <td class="tt"><?= $big['name']; ?></td>
             <td class="tt">
-                <input type="button" value="修改" onclick="location.href='?do=edit_admin&id=<?= $row['id']; ?>'">
-                <input type="button" value="刪除" onclick="location.href='./api/del_admin.php?id=<?= $row['id']; ?>'">
+            <input type="button" value="修改" onclick="edit(this,<?= $big['id']; ?>)">
+                <input type="button" value="刪除" onclick="location.href='./api/del_type.php?id=<?= $big['id']; ?>'">
             </td>
         </tr>
 
@@ -25,10 +25,10 @@
         foreach ($mids as $mid) {
         ?>
             <tr>
-                <td class="pp"><?= $mid['name']; ?></td>
+                <td class="pp ct"><?= $mid['name']; ?></td>
                 <td class="pp">
-                    <input type="button" value="修改" onclick="location.href='?do=edit_admin&id=<?= $row['id']; ?>'">
-                    <input type="button" value="刪除" onclick="location.href='./api/del_admin.php?id=<?= $row['id']; ?>'">
+                    <input type="button" value="修改" onclick="edit(this,<?= $mid['id']; ?>)">
+                    <input type="button" value="刪除" onclick="location.href='./api/del_type.php?id=<?= $mid['id']; ?>'">
                 </td>
             </tr>
     <?php
@@ -38,6 +38,18 @@
 
 <script>
     getTypes(0)
+
+
+    function edit(dom, id) {
+        console.log(dom)
+        let name = prompt("請輸入您要修改的名稱:", `${$(dom).parent().prev().text()}`)
+        $.post('./api/edit_type.php', {
+            name: name,
+            id: id
+        }, (res) => {
+            location.reload();
+        })
+    }
 
     function add(type) {
         let name
@@ -76,3 +88,39 @@
 
     }
 </script>
+
+
+<h2 class="ct">商品管理</h2>
+<div class="ct">
+<input type="button"  value="新增商品" onclick="location.href='?do=add_good'"></div>
+
+<table class="all">
+    <tr>
+        <td class="tt">編號</td>
+        <td class="tt">商品名稱</td>
+        <td class="tt">庫存量</td>
+        <td class="tt">狀態</td>
+        <td class="tt">操作</td>
+    </tr>
+    <?php
+    
+    $rows=$Good->all();
+    foreach($rows as $row){?>
+    <tr>
+        <td class="pp"><?=$row['no'];?></td>
+        <td class="pp"><?=$row['name'];?></td>
+        <td class="pp"><?=$row['stock'];?></td>
+        <td class="pp">
+        <?=($row['sh']>0)?'販售中':'已下架';?>
+        </td>
+        <td class="pp">
+        <div><input type="button" value="修改"onclick="location.href='?do=edit_good&id=<?=$row['id'];?>&big=<?=$row['big'];?>&mid=<?=$row['mid'];?>'">
+        <input type="button" value="刪除"onclick="location.href='./api/del_good.php?id=<?=$row['id'];?>'"></div>
+        <div><input type="button" value="上架" onclick="location.href='./api/sh.php?id=<?=$row['id'];?>&sh=1'">
+        <input type="button" value="下架" onclick="location.href='./api/sh.php?id=<?=$row['id'];?>'"></div>
+        
+    </td>
+    </tr>
+    <?php
+}?>
+</table>
