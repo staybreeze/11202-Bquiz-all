@@ -147,9 +147,16 @@ $Menu = new DB('menu');
 
 //     PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
-    // CREATE TABLE `db31`.`title` 
+//     CREATE TABLE `db31`.`title` 
 // (`id` INT UNSIGNED NULL AUTO_INCREMENT ,
 //  `text` TEXT NOT NULL ,
 //   `img` TEXT NOT NULL ,
 //    `sh` INT NOT NULL ,
 //     PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+//     CREATE TABLE `db31`.`mvim` 
+//     (`id` INT UNSIGNED NULL AUTO_INCREMENT ,
+
+//       `img` TEXT NOT NULL ,
+//        `sh` INT NOT NULL ,
+//         PRIMARY KEY (`id`)) ENGINE = InnoDB;

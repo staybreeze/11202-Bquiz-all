@@ -6,9 +6,11 @@
         case"title":
             echo "更換標題區圖片";
             break;
-            case"":
+            case"mvim":
+                echo "更換動畫圖片";
                 break;
-                case"":
+                case"image":
+                    echo "更換校園映像圖片";
                     break;
     }
     ?>    
@@ -22,9 +24,11 @@
         case"title":
             echo "標題區圖片";
             break;
-            case"":
+            case"mvim":
+                echo "更換動畫圖片";
                 break;
-                case"":
+                case"image":
+                    echo "更換校園映像圖片";
                     break;
     }
     ?>   

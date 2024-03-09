@@ -15,7 +15,15 @@ switch($table){
         $_POST['sh']=0;
 
         break;
-}
+        case "mvim":
+            $_POST['sh']=0;
+    
+            break;
+
+            case "image":
+                $_POST['sh']=0;
+        
+                break;        }
 $DB->save($_POST);
 to("../back.php?do=$table");
 ?>
