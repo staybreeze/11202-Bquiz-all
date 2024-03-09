@@ -138,6 +138,30 @@ function dd($id){
 // PRIMARY KEY (`id`)) 
 // ENGINE = InnoDB;
 
+// CREATE TABLE `db34`.`good` 
+// (`id` INT UNSIGNED NULL AUTO_INCREMENT , 
+// `name` TEXT NOT NULL , 
+// `price` INT NOT NULL ,
+// `stock` INT NOT NULL ,
+// `spec` TEXT NOT NULL ,
+// `intro` TEXT NOT NULL ,
+// `img` TEXT NOT NULL , 
+// `sh` INT NOT NULL , 
+// `big` INT NOT NULL , 
+// `mid` INT NOT NULL , 
+// `no` INT NOT NULL , 
+// PRIMARY KEY (`id`)) 
+// ENGINE = InnoDB;
+
+// CREATE TABLE `db34`.`admin` 
+// (`id` INT UNSIGNED NULL AUTO_INCREMENT , 
+// `pr` TEXT NOT NULL , 
+// `acc` TEXT NOT NULL ,
+// `pw` TEXT NOT NULL ,
+
+// PRIMARY KEY (`id`)) 
+// ENGINE = InnoDB;
+
 $Admin=new DB('admin');
 
 $User=new DB('user');

@@ -60,7 +60,7 @@ echo  in_array(1,$row['pr'])?"<a href='?do=th'>商品分類與管理</a>":"";
                 ?>
         	        </div>
         <div id="bottom" style="line-height:70px; color:#FFF; background:url(icon/bot.png);" class="ct">
-        	頁尾版權 :        </div>
+        	<?=$Bot->find(1)['bot'];?>     </div>
     </div>
 
 </body></html>
