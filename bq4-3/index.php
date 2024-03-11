@@ -38,11 +38,11 @@ include_once "./api/db.php"
 
                                 <?php
                                 if (isset($_SESSION['admin'])) {
-    echo ' <a href="back.php">返回管理</a> ';
+                                        echo ' <a href="back.php">返回管理</a> ';
                                 } else {
-                                                                            echo '<a href="?do=admin">管理登入</a>';
+                                        echo '<a href="?do=admin">管理登入</a>';
                                 }
-                        // dd($_SESSION);
+                                // dd($_SESSION);
                                 ?>
 
                         </div>
@@ -50,6 +50,27 @@ include_once "./api/db.php"
                 </div>
                 <div id="left" class="ct">
                         <div style="min-height:400px;">
+                                <a href="?type=0">全部商品(<?= $Good->count(['sh' => 1]); ?>)</a>
+                                <?php
+                                $rows = $Type->all(['big_id' => 0]);
+                                foreach ($rows as $row) {
+                                ?>
+<div class="ww">
+        <a href="?type=<?=$row['id'];?>"><?=$row['text'];?>(<?= $Good->count(['sh' => 1,'big'=>$row['id']]); ?>)</a>
+        <div class="s">
+        <?php
+                                $mids = $Type->all(['big_id' => $row['id']]);
+                                foreach ($mids as $mid) {
+                                ?>
+               <a href="?type=<?=$mid['id'];?>"><?=$mid['text'];?>(<?= $Good->count(['sh' => 1,'mid'=>$mid['id']]); ?>)</a>
+                <?php
+                }?>
+        </div>
+</div>
+                                <?php
+                                } ?>
+
+
                         </div>
                         <span>
                                 <div>進站總人數</div>

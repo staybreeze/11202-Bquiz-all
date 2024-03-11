@@ -105,6 +105,9 @@ div.ww:hover > div.s
 {
 	display:block;
 }
+#left .s a{
+	background-color: aqua;
+}
 .sb button
 {
 	font-size:12px;
