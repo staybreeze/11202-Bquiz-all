@@ -136,10 +136,11 @@ function to($url)
 }
 
 $Admin = new DB('admin');
-$User = new DB('user');
+$Mem = new DB('mem');
 $Good = new DB('good');
 $Order = new DB('order');
 $Type = new DB('type');
+$Bot = new DB('Bot');
 // CREATE TABLE `db24`.`admin` (
 //     `id` INT UNSIGNED NULL AUTO_INCREMENT ,
 //      `acc` TEXT NOT NULL ,
@@ -166,4 +167,15 @@ $Type = new DB('type');
 //      `sh` INT NOT NULL ,
 //       `big` INT NOT NULL ,
 //       `mid` INT NOT NULL ,
+//         PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+// CREATE TABLE `db24`.`mem` (
+//     `id` INT UNSIGNED NULL AUTO_INCREMENT ,
+//      `name` TEXT NOT NULL ,
+//       `acc` TEXT NOT NULL ,
+//       `pw` TEXT NOT NULL ,
+//       `tel` TEXT NOT NULL ,
+//       `addr` TEXT NOT NULL ,
+//       `email` TEXT NOT NULL ,
+//       `date` DATE NOT NULL ,
 //         PRIMARY KEY (`id`)) ENGINE = InnoDB;

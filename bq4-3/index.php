@@ -23,13 +23,13 @@ include_once "./api/db.php"
                                 <img src="./img/0416.jpg">
                         </a>
                         <div style="padding:10px;">
-                                <a href="?">回首頁</a> |
+                                <a href="index.php">回首頁</a> |
                                 <a href="?do=news">最新消息</a> |
                                 <a href="?do=look">購物流程</a> |
                                 <a href="?do=buycart">購物車</a> |
 
                                 <?php
-                                if (isset($_SESSION['user'])) {
+                                if (!isset($_SESSION['user'])) {
                                         echo ' <a href="?do=login">會員登入</a> |';
                                 } else {
                                         echo ' <a href="./apu/logout.php">會員登出</a> |';
@@ -46,7 +46,8 @@ include_once "./api/db.php"
                                 ?>
 
                         </div>
-                        情人節特惠活動 &nbsp; 為了慶祝七夕情人節，將舉辦情人兩人到現場有七七折之特惠活動~
+                        <marquee behavior="" direction="">
+                        情人節特惠活動 &nbsp; 為了慶祝七夕情人節，將舉辦情人兩人到現場有七七折之特惠活動~</marquee>
                 </div>
                 <div id="left" class="ct">
                         <div style="min-height:400px;">
@@ -91,7 +92,7 @@ include_once "./api/db.php"
                         ?>
                 </div>
                 <div id="bottom" style="line-height:70px;background:url(./img/bot.png); color:#FFF;" class="ct">
-                        頁尾版權 : </div>
+                        <?=$Bot->find(1)['bot'];?> </div>
         </div>
 
 </body>
