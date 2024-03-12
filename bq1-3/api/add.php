@@ -17,6 +17,11 @@ switch ($table) {
         $Title->save($_POST);
 
         break;
+        case "mvim":
+            $_POST['sh'] = 1;
+            $Mvim->save($_POST);
+    
+            break;
 }
 
 to("../back.php?do=$table");

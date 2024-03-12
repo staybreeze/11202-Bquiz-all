@@ -7,7 +7,11 @@
 
             echo "更換標題區圖片";
             break;
-    }
+            case "mvim":
+
+                echo "更換動畫圖片";
+                break;
+        }
 
     ?>
 
@@ -21,6 +25,10 @@
 
                     echo "標題區圖片";
                     break;
+                    case "mvim":
+
+                        echo "動畫圖片";
+                        break;
             }
 
             ?>

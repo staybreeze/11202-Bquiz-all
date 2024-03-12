@@ -19,6 +19,10 @@ switch ($table) {
        $row['img']=$_POST['img'];
 
         break;
+        case "mvim":
+            $row['img']=$_POST['img'];
+     
+             break;
 }
 $DB->save($row);
 to("../back.php?do=$table");

@@ -10,17 +10,26 @@ foreach ($_POST['id'] as$idx=> $id) {
         $DB->del($id);
         dd($id);
     } else {
+        $row = $DB->find($id);
         switch ($table) {
             case "title":
                 
-                    $row = $Title->find($id);
+       
                     $row['text'] = $_POST['text'][$idx];
                     $row['sh'] = ($_POST['sh']==$row['id']) ? 1 : 0;
-                    $Title->save($row);
+  
+                
+
+                break;
+                case "mvim":
+
+                    $row['sh'] = (isset($_POST['sh'])&&in_array($id,$_POST['sh'])) ? 1 : 0;
+         
                 
 
                 break;
         }
+        $DB->save($row);
     }
 }
 
