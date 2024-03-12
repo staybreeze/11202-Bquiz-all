@@ -23,6 +23,10 @@ switch ($table) {
             $row['img']=$_POST['img'];
      
              break;
+             case "image":
+                $row['img']=$_POST['img'];
+         
+                 break;
 }
 $DB->save($row);
 to("../back.php?do=$table");

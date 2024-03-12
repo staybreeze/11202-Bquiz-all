@@ -28,6 +28,13 @@ foreach ($_POST['id'] as$idx=> $id) {
                 
 
                 break;
+                case "image":
+
+                    $row['sh'] = (isset($_POST['sh'])&&in_array($id,$_POST['sh'])) ? 1 : 0;
+         
+                
+
+                break;
         }
         $DB->save($row);
     }

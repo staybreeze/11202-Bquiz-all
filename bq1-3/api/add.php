@@ -14,14 +14,20 @@ if (isset($_FILES['img']['tmp_name'])) {
 switch ($table) {
     case "title":
         $_POST['sh'] = 0;
-        $Title->save($_POST);
+     
 
         break;
-        case "mvim":
-            $_POST['sh'] = 1;
-            $Mvim->save($_POST);
-    
-            break;
+    case "mvim":
+        $_POST['sh'] = 1;
+   
+
+        break;
+    case "image":
+        $_POST['sh'] = 1;
+      
+
+        break;
 }
 
+$DB->save($_POST);
 to("../back.php?do=$table");
