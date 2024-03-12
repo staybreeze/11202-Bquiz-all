@@ -149,3 +149,10 @@ $Total=new DB('total');
 //       `sh` TEXT NOT NULL ,
 //        `img` TEXT NOT NULL ,
 //         PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+if(!isset($_SESSION['visited'])){
+    $row=$Total->find(1);
+    $row['total']++;
+    $Total->save($row);
+    $_SESSION['visited']=1;
+}
