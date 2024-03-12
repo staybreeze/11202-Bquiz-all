@@ -27,6 +27,10 @@ switch ($table) {
       
 
         break;
+        case "ad":
+            $_POST['sh'] = 1;
+
+            break;
 }
 
 $DB->save($_POST);
