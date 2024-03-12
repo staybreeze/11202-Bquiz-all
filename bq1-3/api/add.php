@@ -31,6 +31,10 @@ switch ($table) {
             $_POST['sh'] = 1;
 
             break;
+            case "news":
+                $_POST['sh'] = 1;
+    
+                break;
 }
 
 $DB->save($_POST);

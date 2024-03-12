@@ -44,6 +44,12 @@ foreach ($_POST['id'] as$idx=> $id) {
 
                              $row['bottom'] = $_POST['bottom'][$idx];
                 break;
+                case "news":
+
+                    $row['sh'] = (isset($_POST['sh'])&&in_array($id,$_POST['sh'])) ? 1 : 0;
+
+                             $row['text'] = $_POST['text'][$idx];
+                break;
         }
         $DB->save($row);
     }
