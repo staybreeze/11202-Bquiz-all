@@ -35,6 +35,11 @@ switch ($table) {
                 $_POST['sh'] = 1;
     
                 break;
+                case "menu":
+                    $_POST['sh'] = 1;
+                    $_POST['sub_id'] = 0;
+        
+                    break;
 
 }
 
