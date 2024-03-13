@@ -19,3 +19,37 @@
         </div>
     </div>
 </fieldset>
+
+<script>
+    function log() {
+        let acc = $("#acc").val()
+        let pw = $("#pw").val()
+        let email = $("#email").val()
+        $.post('./api/ck_acc.php', {
+            acc: acc
+        }, (res) => {
+            if (res > 0) {
+
+                $.post('./api/ck_pw.php', {
+                    acc: acc,
+                    pw: pw
+                }, (res) => {
+                    if (res > 0) {
+
+                        if ($('#acc').val() == 'admin') {
+                            location.href='back.php'
+                        } else {
+                            location.href='index.php'
+                        }
+
+                    } else {
+                        alert("密碼錯誤")
+                    }
+                })
+
+            } else {
+                alert("帳號錯誤")
+            }
+        })
+    }
+</script>
