@@ -13,6 +13,19 @@ switch ($table) {
         case "mvim":
             $_POST['sh'] = 1;
             break;
+            case "image":
+                $_POST['sh'] = 1;
+                break;
+                case "ad":
+                    $_POST['sh'] = 1;
+                    break;
+                    case "news":
+                        $_POST['sh'] = 1;
+                        break;
+                        case "menu":
+                            $_POST['sh'] = 1;
+                            $_POST['menu_id']=0;
+                            break;
 }
 
 $DB->save($_POST);

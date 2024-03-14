@@ -26,8 +26,8 @@ include_once "./api/db.php"
 	<div id="main">
 		<a title="" href="index.php">
 			<div class="ti" style="background:url('use/'); background-size:cover;">
-<img src="./img/<?=$Title->find(['sh'=>1])['img'];?>" alt="">
-		</div><!--標題-->
+				<img src="./img/<?= $Title->find(['sh' => 1])['img']; ?>" alt="<?= $Title->find(['sh' => 1])['text']; ?>">
+			</div><!--標題-->
 		</a>
 
 		<div id="ms">
@@ -35,10 +35,35 @@ include_once "./api/db.php"
 				<div id="menuput" class="dbor">
 					<!--主選單放此-->
 					<span class="t botli">主選單區</span>
+					<?php
+					$bigs = $Menu->all(['sh' => 1, 'menu_id' => 0]);
+					foreach ($bigs as $big) {
+					?>
+						<div class="mainmu">
+							<a href="<?= $big['href']; ?>"><?= $big['text']; ?></a>
+							<div class="mw">
+								<?php
+								$mids = $Menu->all(['sh' => 1, 'menu_id' => $big['id']]);
+								foreach ($mids as $mid) {
+								?>
+									<div class="mainmu2">
+
+										<a href="<?= $mid['href']; ?>"><?= $mid['text']; ?></a>
+
+									</div>
+
+
+								<?php
+								} ?>
+							</div>
+						</div>
+
+					<?php
+					} ?>
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
 					<span class="t">進站總人數 :
-						1 </span>
+						<?= $Total->find(1)['total']; ?></span>
 				</div>
 			</div>
 
@@ -72,9 +97,18 @@ include_once "./api/db.php"
 			</script>
 			<div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
 				<!--右邊-->
-				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('?do=admin')">管理登入</button>
+				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="location.href='?do=login'">管理登入</button>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
+					<?php
+					$rows = $Image->all(['sh' => 1]);
+					foreach ($rows as $row) {
+					?>
+<div class="ct">
+	<img src="./img/<?=$row['img'];?>" alt=""width="150px" height="103px">
+</div>
+					<?php
+					}?>
 					<script>
 						var nowpage = 0,
 							num = 0;
@@ -100,7 +134,8 @@ include_once "./api/db.php"
 		</div>
 		<div style="clear:both;"></div>
 		<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-			<span class="t" style="line-height:123px;"></span>
+			<span class="t" style="line-height:123px;">
+				<?= $Bottom->find(1)['bottom']; ?></span>
 		</div>
 	</div>
 

@@ -5,6 +5,12 @@ switch($table){
     case"title":
         echo "<h2 class='ct'>更換標題區圖片</h2>";
         break;
+        case"mvim":
+            echo "<h2 class='ct'>更換動畫圖片</h2>";
+            break;
+            case"image":
+                echo "<h2 class='ct'>更換校園映像圖片</h2>";
+                break;
 }
 ?>    
 
@@ -15,9 +21,16 @@ switch($table){
 <?php
 
 switch($table){
-    case"title":
-        echo "<h2>標題區圖片: </h2>";
-        break;
+
+        case"title":
+            echo "<h2 class='ct'>更換標題區圖片</h2>";
+            break;
+            case"mvim":
+                echo "<h2 class='ct'>更換動畫圖片</h2>";
+                break;
+                case"image":
+                    echo "<h2 class='ct'>更換校園映像圖片</h2>";
+                    break;
 }
 ?>    <input type="file" name="img" id=""></div>
 
